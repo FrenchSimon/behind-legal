@@ -8,10 +8,11 @@
 <style>
 /* Couleurs « Nuit bleue » (src/theme/tokens.ts), comme la page de la politique.
    Police système : aucune requête vers un tiers, sauf l'envoi des réponses. */
-:root { color-scheme: dark light; --fond: #070A16; --surface: #10162A; --bord: #222B45; --texte: #E6EAF2; --doux: #C9D0DE; --discret: #9EA8BE; --accent: #7FD8BE; --sur-accent: #070A16; --erreur: #FF9B9B; }
-@media (prefers-color-scheme: light) { :root { --fond: #FFFFFF; --surface: #F3F5FA; --bord: #D5DBE8; --texte: #111729; --doux: #2A3450; --discret: #5A6580; --accent: #1F7A63; --sur-accent: #FFFFFF; --erreur: #B42318; } }
+:root { color-scheme: dark light; --fond: #070A16; --surface: #10162A; --bord: #222B45; --texte: #E6EAF2; --doux: #C9D0DE; --discret: #9EA8BE; --accent: #7FD8BE; --sur-accent: #070A16; --erreur: #FF9B9B; --halo: rgba(127, 216, 190, .16); }
+@media (prefers-color-scheme: light) { :root { --fond: #FFFFFF; --surface: #F3F5FA; --bord: #D5DBE8; --texte: #111729; --doux: #2A3450; --discret: #5A6580; --accent: #1F7A63; --sur-accent: #FFFFFF; --erreur: #B42318; --halo: rgba(31, 122, 99, .10); } }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--fond); color: var(--doux); font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+/* Halo menthe en haut, comme sur la page de présentation et les captures des stores. */
+body { margin: 0; background: radial-gradient(ellipse 80% 45% at 50% 0%, var(--halo), transparent 70%) top / 100% 900px no-repeat, var(--fond); color: var(--doux); font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 main { max-width: 640px; margin: 0 auto; padding: 32px 16px 56px; }
 nav { text-align: right; font-size: 14px; }
 h1 { color: var(--texte); font-size: 28px; line-height: 1.15; margin: 8px 0 12px; }
@@ -50,6 +51,7 @@ button:disabled { opacity: .5; cursor: default; }
 <section id="formulaire-bloc">
 <h1>Ton avis sur Behind</h1>
 <p>Merci de tester Behind ! Ce questionnaire prend environ 1 minute. Tes réponses servent uniquement à améliorer l’application ; elles sont gardées un an au plus, puis supprimées.</p>
+<p class="note">Tu découvres Behind ? <a href="../app/">Voir la présentation de l’appli</a>.</p>
 <p class="note">Behind est disponible pour l’instant sur Google Play seulement (Android) : télécharge-le <a href="https://play.google.com/store/apps/details?id=io.github.frenchsimon.behind" target="_blank" rel="noopener">ici</a> (téléphone et tablette).</p>
 <p class="note">Seules les questions marquées d’une <span class="obligatoire">*</span> sont obligatoires. Tu peux répondre à nouveau après chaque film.</p>
 
