@@ -1,0 +1,67 @@
+/* Page de présentation de Behind : charte « Nuit bleue » (src/theme/tokens.ts).
+   Polices hébergées avec la page (licence OFL, dossier polices/) : aucune requête vers un tiers. */
+@font-face { font-family: "Bricolage Grotesque"; src: url("polices/BricolageGrotesque_700Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("polices/Inter_400Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("polices/Inter_600SemiBold.ttf") format("truetype"); font-weight: 600; font-display: swap; }
+
+:root {
+  color-scheme: dark;
+  --fond: #070A16; --surface: #111729; --surface-haute: #19203A; --bordure: #2A3450;
+  --texte: #E6EAF2; --doux: #C9D0DE; --secondaire: #9EA8BE;
+  --accent: #7FD8BE; --fond-accent: #12302F; --bordure-accent: #1F4A4A; --sur-accent: #06231C;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--fond); color: var(--doux); font: 17px/1.6 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--accent); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+h1, h2, h3, .marque { font-family: "Bricolage Grotesque", Inter, sans-serif; font-weight: 700; color: var(--texte); }
+.page { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+/* En-tête */
+header .page { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; padding-bottom: 20px; }
+.marque { font-size: 26px; letter-spacing: -0.01em; text-decoration: none; color: var(--texte); }
+.langue { font-size: 15px; }
+
+/* Accroche */
+.accroche { display: grid; gap: 40px; align-items: center; padding: 32px 0 56px; }
+.accroche h1 { font-size: clamp(34px, 7vw, 54px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 18px; }
+.accroche p { font-size: 19px; margin: 0 0 28px; max-width: 34em; }
+.bouton { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 28px; border-radius: 999px; background: var(--accent); color: var(--sur-accent); font-weight: 600; font-size: 17px; text-decoration: none; }
+.bouton:hover { filter: brightness(1.06); }
+.precision { display: block; margin-top: 14px; font-size: 15px; color: var(--secondaire); }
+.telephone { justify-self: center; width: min(300px, 78vw); border-radius: 36px; border: 1px solid var(--bordure); box-shadow: 0 30px 80px rgba(0, 0, 0, .55); display: block; height: auto; }
+
+/* Sections */
+section { padding: 48px 0; border-top: 1px solid var(--surface-haute); }
+.etiquette { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 8px; }
+section h2 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; margin: 0 0 28px; letter-spacing: -0.01em; }
+.cartes { display: grid; gap: 14px; }
+.carte { background: var(--surface); border: 1px solid var(--bordure); border-radius: 26px; padding: 22px 22px 20px; }
+.carte h3 { font-size: 20px; margin: 0 0 6px; }
+.carte p { margin: 0; }
+.numero { display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: 999px; background: var(--fond-accent); border: 1px solid var(--bordure-accent); color: var(--accent); font-weight: 600; margin-bottom: 14px; }
+.liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.liste li { position: relative; padding-left: 28px; }
+.liste li::before { content: ""; position: absolute; left: 4px; top: .62em; width: 9px; height: 9px; border-radius: 999px; background: var(--accent); }
+
+/* Captures : défilement horizontal dans leur bande, jamais de la page */
+.captures { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 0 16px; }
+.captures figure { margin: 0; flex: 0 0 auto; width: min(230px, 62vw); scroll-snap-align: start; }
+.captures img { width: 100%; height: auto; display: block; border-radius: 24px; border: 1px solid var(--bordure); }
+.captures figcaption { font-size: 15px; color: var(--secondaire); margin-top: 10px; }
+
+/* Films */
+.films { list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+.films li { background: var(--surface); border: 1px solid var(--bordure); border-radius: 999px; padding: 10px 18px; color: var(--texte); }
+.note { color: var(--secondaire); font-size: 15px; }
+
+/* Pied de page */
+footer { border-top: 1px solid var(--surface-haute); padding: 32px 0 48px; font-size: 15px; color: var(--secondaire); }
+footer ul { list-style: none; padding: 0; margin: 0 0 18px; display: flex; flex-wrap: wrap; gap: 10px 24px; }
+
+@media (min-width: 760px) {
+  .accroche { grid-template-columns: 1.3fr 1fr; padding: 56px 0 80px; }
+  .cartes.trois { grid-template-columns: repeat(3, 1fr); }
+  .cartes.deux { grid-template-columns: repeat(2, 1fr); }
+}
