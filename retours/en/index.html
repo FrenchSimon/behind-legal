@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Behind · Your feedback</title>
+<style>
+/* Couleurs « Nuit bleue » (src/theme/tokens.ts), comme la page de la politique.
+   Police système : aucune requête vers un tiers, sauf l'envoi des réponses. */
+:root { color-scheme: dark light; --fond: #070A16; --surface: #10162A; --bord: #222B45; --texte: #E6EAF2; --doux: #C9D0DE; --discret: #9EA8BE; --accent: #7FD8BE; --sur-accent: #070A16; --erreur: #FF9B9B; }
+@media (prefers-color-scheme: light) { :root { --fond: #FFFFFF; --surface: #F3F5FA; --bord: #D5DBE8; --texte: #111729; --doux: #2A3450; --discret: #5A6580; --accent: #1F7A63; --sur-accent: #FFFFFF; --erreur: #B42318; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fond); color: var(--doux); font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 640px; margin: 0 auto; padding: 32px 16px 56px; }
+nav { text-align: right; font-size: 14px; }
+h1 { color: var(--texte); font-size: 28px; line-height: 1.15; margin: 8px 0 12px; }
+h2 { color: var(--accent); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin: 36px 0 4px; }
+p { margin: 0 0 12px; }
+a { color: var(--accent); }
+.note { color: var(--discret); font-size: 14px; }
+fieldset, .champ { border: 1px solid var(--bord); background: var(--surface); border-radius: 22px; padding: 18px 16px 16px; margin: 12px 0 0; min-width: 0; }
+legend, label.titre { color: var(--texte); font-weight: 600; padding: 0; display: block; margin-bottom: 10px; }
+legend { float: left; width: 100%; }
+legend + * { clear: both; }
+.obligatoire { color: var(--accent); }
+.choix { display: flex; flex-wrap: wrap; gap: 8px; }
+.choix label { position: relative; }
+.choix input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.choix span { display: inline-block; min-height: 48px; padding: 12px 18px; border: 1px solid var(--bord); border-radius: 999px; color: var(--doux); line-height: 1.5; }
+.choix input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--sur-accent); font-weight: 600; }
+.choix input:focus-visible + span, input[type=text]:focus-visible, input[type=email]:focus-visible, textarea:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.colonne { flex-direction: column; }
+.colonne span { width: 100%; }
+.echelle span { min-width: 52px; text-align: center; padding: 12px 0; }
+.bornes { display: flex; justify-content: space-between; color: var(--discret); font-size: 13px; margin-top: 6px; max-width: 300px; }
+input[type=text], input[type=email], textarea { width: 100%; font: inherit; color: var(--texte); background: var(--fond); border: 1px solid var(--bord); border-radius: 16px; padding: 12px 14px; }
+textarea { min-height: 110px; resize: vertical; }
+.piege { position: absolute; left: -9999px; }
+button { width: 100%; min-height: 56px; margin-top: 32px; font: inherit; font-weight: 700; font-size: 17px; color: var(--sur-accent); background: var(--accent); border: 0; border-radius: 999px; cursor: pointer; }
+button:disabled { opacity: .5; cursor: default; }
+#etat { margin-top: 16px; min-height: 1.5em; }
+#etat.erreur { color: var(--erreur); }
+#merci h1 { margin-top: 48px; }
+</style>
+</head>
+<body>
+<main>
+<nav><a href="../" hreflang="fr">Français</a></nav>
+<section id="formulaire-bloc">
+<h1>Your feedback on Behind</h1>
+<p>Thanks for testing Behind! This questionnaire takes about 3 minutes. Your answers are only used to improve the app; they are kept for five years at most, then deleted.</p>
+<p class="note">Only questions marked with <span class="obligatoire">*</span> are required. You can answer again after each film.</p>
+
+<!-- Clé d'accès Web3Forms (publique par conception : elle ne permet que d'envoyer vers l'adresse de Behind). -->
+<form id="formulaire" action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value="5dcaea1f-92cb-4874-be92-506f50f8ab8e">
+<input type="hidden" name="subject" value="Behind · retour d’un testeur">
+<input type="hidden" name="from_name" value="Formulaire Behind">
+<input type="hidden" name="langue" value="en">
+<label class="piege" aria-hidden="true">Leave empty <input type="checkbox" name="botcheck" tabindex="-1"></label>
+
+<h2>You and Behind</h2>
+
+<fieldset>
+<legend>Have you watched a film with Behind?&nbsp;<span class="obligatoire">*</span></legend>
+<div class="choix">
+<label><input type="radio" name="film_regarde" value="Oui" required><span>Yes</span></label>
+<label><input type="radio" name="film_regarde" value="Pas encore"><span>Not yet</span></label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Did you understand what Behind is?&nbsp;<span class="obligatoire">*</span></legend>
+<div class="choix colonne">
+<label><input type="radio" name="compris" value="Oui, tout de suite" required><span>Yes, right away</span></label>
+<label><input type="radio" name="compris" value="Oui, après un moment"><span>Yes, after a while</span></label>
+<label><input type="radio" name="compris" value="Pas vraiment"><span>Not really</span></label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Which device do you use Behind on?&nbsp;<span class="obligatoire">*</span></legend>
+<div class="choix">
+<label><input type="radio" name="appareil" value="Téléphone Android" required><span>Android phone</span></label>
+<label><input type="radio" name="appareil" value="Tablette Android"><span>Android tablet</span></label>
+</div>
+</fieldset>
+
+<div id="si-film">
+<h2>The screening</h2>
+
+<fieldset>
+<legend>Which film did you watch?&nbsp;<span class="obligatoire">*</span></legend>
+<div class="choix colonne">
+<label><input type="radio" name="film" value="Star Wars IV" required><span>Star Wars: Episode IV – A New Hope</span></label>
+<label><input type="radio" name="film" value="Captain America"><span>Captain America: The First Avenger</span></label>
+<label><input type="radio" name="film" value="Harry Potter 1"><span>Harry Potter and the Philosopher’s Stone</span></label>
+<label><input type="radio" name="film" value="Scary Movie"><span>Scary Movie</span></label>
+<label><input type="radio" name="film" value="Pirates des Caraïbes 1"><span>Pirates of the Caribbean: The Curse of the Black Pearl</span></label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Did you watch the whole film with Behind?&nbsp;<span class="obligatoire">*</span></legend>
+<div class="choix colonne">
+<label><input type="radio" name="jusqu_au_bout" value="Oui, jusqu'au bout" required><span>Yes, all the way through</span></label>
+<label><input type="radio" name="jusqu_au_bout" value="Arrêté en cours de route"><span>No, I stopped partway</span></label>
+<label><input type="radio" name="jusqu_au_bout" value="Behind arrêté, film fini"><span>No, I stopped Behind but finished the film</span></label>
+</div>
+</fieldset>
+
+<h2>The alerts</h2>
+
+<fieldset>
+<legend>Did the anecdotes arrive at the right moment?&nbsp;<span class="obligatoire">*</span></legend>
+<div class="choix colonne">
+<label><input type="radio" name="bon_moment" value="Toujours" required><span>Yes, always</span></label>
+<label><input type="radio" name="bon_moment" value="La plupart du temps"><span>Most of the time</span></label>
+<label><input type="radio" name="bon_moment" value="Souvent en décalage"><span>Often out of sync with the film</span></label>
+<label><input type="radio" name="bon_moment" value="Aucune alerte reçue"><span>I didn’t get any alerts</span></label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Did an alert disturb you during an important scene?</legend>
+<div class="choix">
+<label><input type="radio" name="scene_importante" value="Non"><span>No</span></label>
+<label><input type="radio" name="scene_importante" value="Une fois"><span>Yes, once</span></label>
+<label><input type="radio" name="scene_importante" value="Plusieurs fois"><span>Yes, several times</span></label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Did you have to resync the timer during the film?</legend>
+<div class="choix colonne">
+<label><input type="checkbox" name="recalage" value="Pas nécessaire"><span>No, it wasn’t needed</span></label>
+<label><input type="checkbox" name="recalage" value="Boutons de recalage"><span>Yes, with the resync buttons</span></label>
+<label><input type="checkbox" name="recalage" value="Scène repère"><span>Yes, with a key scene</span></label>
+<label><input type="checkbox" name="recalage" value="Pas trouvé comment"><span>I wanted to, but couldn’t find how</span></label>
+</div>
+</fieldset>
+
+<h2>The anecdotes</h2>
+
+<fieldset>
+<legend>Overall, did you enjoy the anecdotes?&nbsp;<span class="obligatoire">*</span></legend>
+<div class="choix echelle">
+<label><input type="radio" name="note_anecdotes" value="1" required aria-label="1 out of 5, not at all"><span>1</span></label>
+<label><input type="radio" name="note_anecdotes" value="2" aria-label="2 out of 5"><span>2</span></label>
+<label><input type="radio" name="note_anecdotes" value="3" aria-label="3 out of 5"><span>3</span></label>
+<label><input type="radio" name="note_anecdotes" value="4" aria-label="4 out of 5"><span>4</span></label>
+<label><input type="radio" name="note_anecdotes" value="5" aria-label="5 out of 5, a lot"><span>5</span></label>
+</div>
+<div class="bornes" aria-hidden="true"><span>Not at all</span><span>A lot</span></div>
+</fieldset>
+
+</div>
+
+<h2>Your opinion</h2>
+
+<div class="champ">
+<label class="titre" for="gene">What bothered you or was missing?</label>
+<textarea id="gene" name="gene" maxlength="2000" placeholder="For example: automatic resync, too many anecdotes…"></textarea>
+</div>
+
+<fieldset>
+<legend id="autre-film" data-sans-film="Would you watch a film with Behind?">Would you watch another film with Behind?</legend>
+<div class="choix">
+<label><input type="radio" name="autre_film" value="Oui"><span>Yes</span></label>
+<label><input type="radio" name="autre_film" value="Peut-être"><span>Maybe</span></label>
+<label><input type="radio" name="autre_film" value="Non"><span>No</span></label>
+</div>
+</fieldset>
+
+<div class="champ">
+<label class="titre" for="email">May we contact you about your answers?</label>
+<p class="note">If so, enter your email address. It is only used for this exchange and is never shared.</p>
+<input type="email" id="email" name="email" maxlength="120" autocomplete="email">
+</div>
+
+<div class="champ">
+<label class="titre" for="pseudo">Nickname</label>
+<p class="note">Optional: it lets us group your answers if you send some after several films.</p>
+<input type="text" id="pseudo" name="pseudo" maxlength="40">
+</div>
+
+<button type="submit" id="envoyer">Send my answers</button>
+<p id="etat" role="status" aria-live="polite"></p>
+<p class="note">Answers are forwarded by Web3Forms to the publisher of Behind. <a href="../../en/">Behind privacy policy</a>.</p>
+</form>
+</section>
+
+<section id="merci" hidden>
+<h1>Thank you so much!</h1>
+<p>Your feedback really helps Behind grow. You can fill in this form after each film.</p>
+</section>
+</main>
+
+<script>
+(function () {
+  var formulaire = document.getElementById('formulaire');
+  var bouton = document.getElementById('envoyer');
+  var etat = document.getElementById('etat');
+  var CONTACT = 'behind.app.contact@gmail.com';
+
+  function erreur(texte) {
+    etat.className = 'erreur';
+    etat.textContent = texte;
+    bouton.disabled = false;
+  }
+
+  if (!/^[0-9a-f-]{36}$/i.test(formulaire.elements.access_key.value)) {
+    bouton.disabled = true;
+    etat.textContent = 'Form not open yet: come back soon.';
+    return;
+  }
+
+  // Les questions sur la séance ne s'affichent qu'à qui a regardé un film ;
+  // masquées, elles sont désactivées : ni obligatoires, ni envoyées.
+  var siFilm = document.getElementById('si-film');
+  var autreFilm = document.getElementById('autre-film');
+  var texteAutreFilm = autreFilm.textContent;
+  function majFilm() {
+    var choix = formulaire.querySelector('input[name="film_regarde"]:checked');
+    var film = !!choix && choix.value === 'Oui';
+    siFilm.hidden = !film;
+    siFilm.querySelectorAll('input, textarea').forEach(function (champ) { champ.disabled = !film; });
+    autreFilm.textContent = choix && !film ? autreFilm.getAttribute('data-sans-film') : texteAutreFilm;
+  }
+  formulaire.querySelectorAll('input[name="film_regarde"]').forEach(function (champ) {
+    champ.addEventListener('change', majFilm);
+  });
+  majFilm();
+
+  formulaire.addEventListener('submit', function (evenement) {
+    evenement.preventDefault();
+    if (formulaire.elements.botcheck.checked) return;
+    bouton.disabled = true;
+    etat.className = '';
+    etat.textContent = 'Sending…';
+
+    // Les cases à cocher de même nom sont réunies en une seule réponse.
+    var reponses = {};
+    new FormData(formulaire).forEach(function (valeur, nom) {
+      if (!String(valeur).trim()) return;
+      reponses[nom] = reponses[nom] ? reponses[nom] + ', ' + valeur : String(valeur);
+    });
+
+    fetch(formulaire.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(reponses),
+    }).then(function (reponse) {
+      return reponse.json().then(function (corps) {
+        if (!reponse.ok || !corps.success) throw new Error(String(reponse.status));
+      });
+    }).then(function () {
+      document.getElementById('formulaire-bloc').hidden = true;
+      document.getElementById('merci').hidden = false;
+      window.scrollTo(0, 0);
+    }).catch(function () {
+      erreur('Sending failed. Try again in a moment, or write to us at ' + CONTACT + '.');
+    });
+  });
+})();
+</script>
+</body>
+</html>

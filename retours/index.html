@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Behind · Votre avis après le film</title>
+<title>Behind · Votre avis</title>
 <style>
 /* Couleurs « Nuit bleue » (src/theme/tokens.ts), comme la page de la politique.
    Police système : aucune requête vers un tiers, sauf l'envoi des réponses. */
@@ -13,6 +13,7 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--fond); color: var(--doux); font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 main { max-width: 640px; margin: 0 auto; padding: 32px 16px 56px; }
+nav { text-align: right; font-size: 14px; }
 h1 { color: var(--texte); font-size: 28px; line-height: 1.15; margin: 8px 0 12px; }
 h2 { color: var(--accent); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin: 36px 0 4px; }
 p { margin: 0 0 12px; }
@@ -45,22 +46,52 @@ button:disabled { opacity: .5; cursor: default; }
 </head>
 <body>
 <main>
+<nav><a href="en/" hreflang="en">English</a></nav>
 <section id="formulaire-bloc">
-<h1>Votre avis après le film</h1>
-<p>Merci d’avoir regardé un film avec Behind ! Ce questionnaire prend environ 3 minutes. Vos réponses servent uniquement à améliorer l’application ; elles sont gardées cinq ans au plus, puis supprimées.</p>
-<p class="note">Seules les questions marquées d’une <span class="obligatoire">*</span> sont obligatoires. Vous pouvez répondre après chaque film.</p>
+<h1>Votre avis sur Behind</h1>
+<p>Merci de tester Behind ! Ce questionnaire prend environ 3 minutes. Vos réponses servent uniquement à améliorer l’application ; elles sont gardées cinq ans au plus, puis supprimées.</p>
+<p class="note">Seules les questions marquées d’une <span class="obligatoire">*</span> sont obligatoires. Vous pouvez répondre à nouveau après chaque film.</p>
 
 <!-- Clé d'accès Web3Forms (publique par conception : elle ne permet que d'envoyer vers l'adresse de Behind). -->
 <form id="formulaire" action="https://api.web3forms.com/submit" method="POST">
 <input type="hidden" name="access_key" value="5dcaea1f-92cb-4874-be92-506f50f8ab8e">
-<input type="hidden" name="subject" value="Behind · retour après une séance">
+<input type="hidden" name="subject" value="Behind · retour d’un testeur">
 <input type="hidden" name="from_name" value="Formulaire Behind">
+<input type="hidden" name="langue" value="fr">
 <label class="piege" aria-hidden="true">Ne pas remplir <input type="checkbox" name="botcheck" tabindex="-1"></label>
 
+<h2>Vous et Behind</h2>
+
+<fieldset>
+<legend>Avez-vous regardé un film avec Behind ?&nbsp;<span class="obligatoire">*</span></legend>
+<div class="choix">
+<label><input type="radio" name="film_regarde" value="Oui" required><span>Oui</span></label>
+<label><input type="radio" name="film_regarde" value="Pas encore"><span>Pas encore</span></label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Avez-vous compris ce qu’est Behind ?&nbsp;<span class="obligatoire">*</span></legend>
+<div class="choix colonne">
+<label><input type="radio" name="compris" value="Oui, tout de suite" required><span>Oui, tout de suite</span></label>
+<label><input type="radio" name="compris" value="Oui, après un moment"><span>Oui, après un moment</span></label>
+<label><input type="radio" name="compris" value="Pas vraiment"><span>Pas vraiment</span></label>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Sur quel appareil utilisez-vous Behind ?&nbsp;<span class="obligatoire">*</span></legend>
+<div class="choix">
+<label><input type="radio" name="appareil" value="Téléphone Android" required><span>Téléphone Android</span></label>
+<label><input type="radio" name="appareil" value="Tablette Android"><span>Tablette Android</span></label>
+</div>
+</fieldset>
+
+<div id="si-film">
 <h2>La séance</h2>
 
 <fieldset>
-<legend>Quel film avez-vous regardé ? <span class="obligatoire">*</span></legend>
+<legend>Quel film avez-vous regardé ?&nbsp;<span class="obligatoire">*</span></legend>
 <div class="choix colonne">
 <label><input type="radio" name="film" value="Star Wars IV" required><span>Star Wars, épisode IV : Un nouvel espoir</span></label>
 <label><input type="radio" name="film" value="Captain America"><span>Captain America : First Avenger</span></label>
@@ -71,20 +102,7 @@ button:disabled { opacity: .5; cursor: default; }
 </fieldset>
 
 <fieldset>
-<legend>Sur quel appareil utilisiez-vous Behind ? <span class="obligatoire">*</span></legend>
-<div class="choix">
-<label><input type="radio" name="appareil" value="Téléphone Android" required><span>Téléphone Android</span></label>
-<label><input type="radio" name="appareil" value="Tablette Android"><span>Tablette Android</span></label>
-</div>
-</fieldset>
-
-<div class="champ">
-<label class="titre" for="modele">Marque et modèle de l’appareil</label>
-<input type="text" id="modele" name="modele" maxlength="80" placeholder="Par exemple : Samsung Galaxy A54">
-</div>
-
-<fieldset>
-<legend>Avez-vous regardé le film jusqu’au bout avec Behind ? <span class="obligatoire">*</span></legend>
+<legend>Avez-vous regardé le film jusqu’au bout avec Behind ?&nbsp;<span class="obligatoire">*</span></legend>
 <div class="choix colonne">
 <label><input type="radio" name="jusqu_au_bout" value="Oui, jusqu'au bout" required><span>Oui, jusqu’au bout</span></label>
 <label><input type="radio" name="jusqu_au_bout" value="Arrêté en cours de route"><span>Non, j’ai arrêté en cours de route</span></label>
@@ -95,7 +113,7 @@ button:disabled { opacity: .5; cursor: default; }
 <h2>Les alertes</h2>
 
 <fieldset>
-<legend>Les anecdotes sont-elles arrivées au bon moment ? <span class="obligatoire">*</span></legend>
+<legend>Les anecdotes sont-elles arrivées au bon moment ?&nbsp;<span class="obligatoire">*</span></legend>
 <div class="choix colonne">
 <label><input type="radio" name="bon_moment" value="Toujours" required><span>Oui, toujours</span></label>
 <label><input type="radio" name="bon_moment" value="La plupart du temps"><span>La plupart du temps</span></label>
@@ -126,7 +144,7 @@ button:disabled { opacity: .5; cursor: default; }
 <h2>Les anecdotes</h2>
 
 <fieldset>
-<legend>Dans l’ensemble, les anecdotes vous ont-elles plu ? <span class="obligatoire">*</span></legend>
+<legend>Dans l’ensemble, les anecdotes vous ont-elles plu ?&nbsp;<span class="obligatoire">*</span></legend>
 <div class="choix echelle">
 <label><input type="radio" name="note_anecdotes" value="1" required aria-label="1 sur 5, pas du tout"><span>1</span></label>
 <label><input type="radio" name="note_anecdotes" value="2" aria-label="2 sur 5"><span>2</span></label>
@@ -137,21 +155,17 @@ button:disabled { opacity: .5; cursor: default; }
 <div class="bornes" aria-hidden="true"><span>Pas du tout</span><span>Beaucoup</span></div>
 </fieldset>
 
-<div class="champ">
-<label class="titre" for="anecdote">Une anecdote vous a-t-elle marqué, ou au contraire déçu ?</label>
-<p class="note">Précisez à peu près le moment du film si possible.</p>
-<textarea id="anecdote" name="anecdote" maxlength="2000"></textarea>
 </div>
 
 <h2>Votre avis</h2>
 
 <div class="champ">
 <label class="titre" for="gene">Qu’est-ce qui vous a gêné ou manqué ?</label>
-<textarea id="gene" name="gene" maxlength="2000"></textarea>
+<textarea id="gene" name="gene" maxlength="2000" placeholder="Par exemple : recalage automatique, trop d’anecdotes…"></textarea>
 </div>
 
 <fieldset>
-<legend>Regarderiez-vous un autre film avec Behind ?</legend>
+<legend id="autre-film" data-sans-film="Regarderiez-vous un film avec Behind ?">Regarderiez-vous un autre film avec Behind ?</legend>
 <div class="choix">
 <label><input type="radio" name="autre_film" value="Oui"><span>Oui</span></label>
 <label><input type="radio" name="autre_film" value="Peut-être"><span>Peut-être</span></label>
@@ -173,7 +187,7 @@ button:disabled { opacity: .5; cursor: default; }
 
 <button type="submit" id="envoyer">Envoyer mes réponses</button>
 <p id="etat" role="status" aria-live="polite"></p>
-<p class="note">Les réponses sont transmises par Web3Forms à l’éditeur de l’éditeur de Behind. <a href="../">Politique de confidentialité de Behind</a>.</p>
+<p class="note">Les réponses sont transmises par Web3Forms à l’éditeur de Behind. <a href="../">Politique de confidentialité de Behind</a>.</p>
 </form>
 </section>
 
@@ -201,6 +215,23 @@ button:disabled { opacity: .5; cursor: default; }
     etat.textContent = 'Formulaire pas encore ouvert : revenez bientôt.';
     return;
   }
+
+  // Les questions sur la séance ne s'affichent qu'à qui a regardé un film ;
+  // masquées, elles sont désactivées : ni obligatoires, ni envoyées.
+  var siFilm = document.getElementById('si-film');
+  var autreFilm = document.getElementById('autre-film');
+  var texteAutreFilm = autreFilm.textContent;
+  function majFilm() {
+    var choix = formulaire.querySelector('input[name="film_regarde"]:checked');
+    var film = !!choix && choix.value === 'Oui';
+    siFilm.hidden = !film;
+    siFilm.querySelectorAll('input, textarea').forEach(function (champ) { champ.disabled = !film; });
+    autreFilm.textContent = choix && !film ? autreFilm.getAttribute('data-sans-film') : texteAutreFilm;
+  }
+  formulaire.querySelectorAll('input[name="film_regarde"]').forEach(function (champ) {
+    champ.addEventListener('change', majFilm);
+  });
+  majFilm();
 
   formulaire.addEventListener('submit', function (evenement) {
     evenement.preventDefault();
